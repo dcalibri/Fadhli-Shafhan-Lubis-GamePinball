@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.VFX;
 
 public class BumperController : MonoBehaviour
@@ -26,6 +27,10 @@ public class BumperController : MonoBehaviour
 
 
     public VFXManager vfxManager;
+
+
+    public ScoreManager scoreManager;
+    public float score;
 
     // Start is called before the first frame update
     void Start()
@@ -61,7 +66,7 @@ public class BumperController : MonoBehaviour
             //renderer.material.color = color;
 
             vfxManager.PlayVFX(collision.transform.position);
-
+            scoreManager.AddScore(score);
             animator.SetTrigger("HitBall");
 
 

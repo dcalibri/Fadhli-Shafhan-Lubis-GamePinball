@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
 
 
 public class SwitchController : MonoBehaviour
@@ -17,7 +19,8 @@ public class SwitchController : MonoBehaviour
 
     private SwitchState state;
     private Renderer renderer;
-
+    public ScoreManager scoreManager;
+    public float score = 20f;
     private void Start()
     {
         renderer = GetComponent<Renderer>();
@@ -40,11 +43,15 @@ public class SwitchController : MonoBehaviour
         if (state == SwitchState.On)
         {
             Set(false);
+            scoreManager.AddScore(score);
+
         }
         else
         {
             Set(true);
         }
+
+
     }
 
     private void Set(bool active)

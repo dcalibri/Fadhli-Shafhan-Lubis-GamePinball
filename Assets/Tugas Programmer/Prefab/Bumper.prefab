@@ -64,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 211c62e38bb591149a40992f797b0965, type: 2}
+  - {fileID: 2100000, guid: 1fb6122cd92e505498afe606d4795ca0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -126,6 +126,8 @@ MonoBehaviour:
   audioManager: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
   vfxManager: {fileID: 0}
+  scoreManager: {fileID: 0}
+  score: 10
 --- !u!95 &7278793845425121903
 Animator:
   serializedVersion: 5
