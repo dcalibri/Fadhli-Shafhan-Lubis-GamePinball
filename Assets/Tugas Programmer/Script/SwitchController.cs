@@ -46,13 +46,24 @@ public class SwitchController : MonoBehaviour
         if (state == SwitchState.On)
         {
             Set(false);
-            theAudioSourceOff.Play();
+            if (theAudioSourceOff != null)
+            {
+                theAudioSourceOff.Play();
+            }
         }
         else
         {
             Set(true);
-            theAudioSourceOn.Play();
-            vfxManager.PlayVFX(spawnPosition); // Spawn particle effect at the switch position
+
+            if (theAudioSourceOn != null)
+            {
+                theAudioSourceOn.Play();
+            }
+
+            if (vfxManager != null)
+            {
+                vfxManager.PlayVFX(spawnPosition);
+            }
             scoreManager.AddScore(score);
         }
     }
@@ -60,7 +71,12 @@ public class SwitchController : MonoBehaviour
     public void ForceOff()
     {
         Set(false);
-        theAudioSourceOff.Play();
+        if (theAudioSourceOff != null)
+        {
+            theAudioSourceOff.Play();
+        }
+
+        
     }
 
     private void Set(bool active)

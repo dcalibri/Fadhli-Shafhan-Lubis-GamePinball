@@ -70,3 +70,14 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+Assets/Tugas Programmer/Script/SwitchController.cs
+Assets/Tugas Programmer/Script/ScoreManager.cs
+Assets/Tugas Programmer/Script/BumperController.cs
+Assets/Tugas Programmer/Pinball_Game.unity
+Assets/Tugas Programmer/MainMenu.unity
+Assets/Tugas Programmer/Credit.unity
+Assets/Tugas Programmer/Control.unity
+Assets/TextMesh Pro/Examples & Extras/Resources/Fonts & Materials/Electronic Highway Sign SDF.asset
+Assets/Script custom/MoveToTriggerPosition.cs.meta
+Assets/Script custom/MoveToTriggerPosition.cs
+Assets/ExpandScreen.preset.meta

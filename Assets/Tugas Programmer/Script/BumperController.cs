@@ -65,7 +65,11 @@ public class BumperController : MonoBehaviour
 
             //renderer.material.color = color;
 
-            vfxManager.PlayVFX(collision.transform.position);
+            if (vfxManager != null)
+            {
+                vfxManager.PlayVFX(collision.transform.position);
+            }
+            
             scoreManager.AddScore(score);
             animator.SetTrigger("HitBall");
 
