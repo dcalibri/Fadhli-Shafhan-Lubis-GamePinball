@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Tugas Programmer/Pinball_Game.unity
     guid: 5c5cf368384a71448a315f033c073ab3
+  - enabled: 1
+    path: Assets/Tugas Programmer/Credit.unity
+    guid: eb433ec368d63cf49abc9e0c872185bd
+  - enabled: 1
+    path: Assets/Tugas Programmer/Control.unity
+    guid: 742bf29c47921a84990f66836f84309b
   m_configObjects: {}

@@ -1,12 +1,9 @@
 using UnityEngine;
 using System.Collections;
-using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms.Impl;
-
 
 public class SwitchController : MonoBehaviour
 {
-    private enum SwitchState
+    public enum SwitchState
     {
         Off,
         On,
@@ -17,46 +14,58 @@ public class SwitchController : MonoBehaviour
     public Material offMaterial;
     public Material onMaterial;
 
-    private SwitchState state;
+    public SwitchState state;
     private Renderer renderer;
     public ScoreManager scoreManager;
+
+    public AudioSource theAudioSourceOn;
+    public AudioSource theAudioSourceOff;
+    public VFXManager vfxManager;
+
     public float score = 20f;
+
     private void Start()
     {
         renderer = GetComponent<Renderer>();
-
         Set(false);
-
         StartCoroutine(BlinkTimerStart(5));
     }
+
+    
 
     private void OnTriggerEnter(Collider other)
     {
         if (other == bola)
         {
-            Toggle();
+            Toggle(other.transform.position);
         }
     }
 
-    private void Toggle()
+    public void Toggle(Vector3 spawnPosition)
     {
         if (state == SwitchState.On)
         {
             Set(false);
-            scoreManager.AddScore(score);
-
+            theAudioSourceOff.Play();
         }
         else
         {
             Set(true);
+            theAudioSourceOn.Play();
+            vfxManager.PlayVFX(spawnPosition); // Spawn particle effect at the switch position
+            scoreManager.AddScore(score);
         }
+    }
 
-
+    public void ForceOff()
+    {
+        Set(false);
+        theAudioSourceOff.Play();
     }
 
     private void Set(bool active)
     {
-        if (active == true)
+        if (active)
         {
             state = SwitchState.On;
             renderer.material = onMaterial;
@@ -69,7 +78,7 @@ public class SwitchController : MonoBehaviour
             StartCoroutine(BlinkTimerStart(5));
         }
     }
-    
+
     private IEnumerator BlinkTimerStart(float time)
     {
         yield return new WaitForSeconds(time);

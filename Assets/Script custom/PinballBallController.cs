@@ -5,11 +5,11 @@ public class PinballBallController : MonoBehaviour
 {
     private Rigidbody rb;
     public float climbForceMultiplier = 1f; // Multiplier to adjust climb force
-    public bool climbing;
+    public bool touchRamp;
 
     void Start()
     {
-        climbing = false;
+        touchRamp = false;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -20,7 +20,7 @@ public class PinballBallController : MonoBehaviour
 
     void PreventFlying()
     {
-        if (rb.velocity.y > 0 && !climbing)
+        if (rb.velocity.y > 0 && !touchRamp)
         {
             rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z); // Set the y component of velocity to 0
         }
@@ -32,7 +32,7 @@ public class PinballBallController : MonoBehaviour
         // Check if the collision is with the ramp object
         if (collision.gameObject.CompareTag("Ramp"))
         {
-            climbing = true;
+            touchRamp = true;
             // Apply a force to climb the ramp based on the collision's normal and the pinball's velocity
             foreach (ContactPoint contact in collision.contacts)
             {
@@ -50,7 +50,7 @@ public class PinballBallController : MonoBehaviour
         // Check if the collision is with the ramp object
         if (collision.gameObject.CompareTag("Ramp"))
         {
-            climbing = false;
+            touchRamp = false;
            
         }
     }
