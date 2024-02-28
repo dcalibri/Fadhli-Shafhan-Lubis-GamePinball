@@ -1,27 +1,69 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    // kita buat variabel score untuk menyimpan skor
+    // Variable to store the current score
     public float score;
 
-    private void Start()
+    // Variable to store the highest score
+    public float highestScore;
+
+    // Variable to control whether to save the highest score during gameplay
+    public bool saveInGame = true;
+
+    void Start()
     {
-        // reset skor ke 0 tiap game dimulai dari awal
+        // Load the highest score from player preferences
+        LoadHighestScore();
+
+        // Reset score to 0 at the start of the game
         ResetScore();
     }
 
+    // Method to add score based on the provided value
     public void AddScore(float addition)
     {
-        // tambah skor berdasarkan parameter
         score += addition;
+        
+        if (score > highestScore)
+        {
+            highestScore = score;
+        }
+            
+        highestScore = score;
+        // Check if the current score is higher than the highest score
+        if (saveInGame)
+        {
+            // Update the highest score
+            
+
+            // Save the new highest score
+            SaveHighestScore();
+        }
     }
 
+    // Method to reset the score to 0
     public void ResetScore()
     {
-        // kembalikan skor ke 0 untuk situasi tertentu
         score = 0;
+    }
+
+    // Method to save the highest score to player preferences
+    private void SaveHighestScore()
+    {
+        PlayerPrefs.SetFloat("HighestScore", highestScore);
+        PlayerPrefs.Save();
+    }
+
+    // Method to load the highest score from player preferences
+    private void LoadHighestScore()
+    {
+        highestScore = PlayerPrefs.GetFloat("HighestScore", 0f);
+    }
+
+    // Method to be called to save the score (for debugging purposes)
+    public void SaveScore()
+    {
+        Debug.Log("Score Saved: " + score);
     }
 }
